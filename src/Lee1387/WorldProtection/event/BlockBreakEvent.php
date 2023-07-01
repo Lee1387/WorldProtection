@@ -4,17 +4,17 @@ declare(strict_types=1);
 
 namespace Lee1387\WorldProtection\event;
 
-use pocketmine\event\block\BlockBreakEvent;
+use pocketmine\event\block\BlockBreakEvent as PMBlockBreakEvent;
 use pocketmine\event\Listener;
 use Lee1387\WorldProtection\language\KnownTranslations;
 use Lee1387\WorldProtection\language\LanguageManager;
 use Lee1387\WorldProtection\language\TranslationKeys;
 use Lee1387\WorldProtection\world\WorldManager;
 
-class BreakBlockEvent implements Listener 
+class BlockBreakEvent implements Listener 
 {
 
-    public function onBreakBlock(BlockBreakEvent $event): void 
+    public function onBreakBlock(PMBlockBreakEvent $event): void 
     {
         $world = $event->getBlock()->getPosition()->getWorld();
         $isLock = WorldManager::getProperty(
