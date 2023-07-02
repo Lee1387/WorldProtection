@@ -5,3 +5,8 @@ main: Lee1387\WorldProtection\Loader
 author: Lee1387
 description: A PocketMine-MP Plugin to protect individual worlds on your server.
 website: https://github.com/Lee1387/WorldProtection
+
+permissions:
+    worldprotection.command:
+        description: Allows the player to use the command
+        default: true

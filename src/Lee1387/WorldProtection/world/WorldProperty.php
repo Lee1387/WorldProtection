@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace Lee1387\WorldProtection\world;
 
-enum WorldProperty
-{
+enum WorldProperty {
     const BUILD = "build";
     const PVP = "pvp";
     const NO_DECAY = "no-decay";

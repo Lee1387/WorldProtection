@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Lee1387\WorldProtection;
 
 use pocketmine\plugin\PluginBase;
+use Lee1387\WorldProtection\commands\WorldProtection;
 use Lee1387\WorldProtection\event\BlockBreakEvent;
 use Lee1387\WorldProtection\event\CommandEvent;
 use Lee1387\WorldProtection\event\EntityDamageEvent;
@@ -33,5 +34,9 @@ class Loader extends PluginBase {
         foreach (self::EVENTS as $event) {
             new $event($this);
         }
+        $this->getServer()->getCommandMap()->register(
+            fallbackPrefix: "worldprotection",
+            command: new WorldProtection($this)
+        );
     }
 }
