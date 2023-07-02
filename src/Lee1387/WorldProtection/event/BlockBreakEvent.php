@@ -10,6 +10,7 @@ use Lee1387\WorldProtection\language\KnownTranslations;
 use Lee1387\WorldProtection\language\LanguageManager;
 use Lee1387\WorldProtection\language\TranslationKeys;
 use Lee1387\WorldProtection\world\WorldManager;
+use Lee1387\WorldProtection\world\WorldProperty;
 
 class BlockBreakEvent implements Listener 
 {
@@ -18,7 +19,7 @@ class BlockBreakEvent implements Listener
         $world = $event->getBlock()->getPosition()->getWorld();
         $isLock = WorldManager::getProperty(
             world: $world, 
-            property: "lock"
+            property: WorldProperty::BUILD
         );
         $player = $event->getPlayer();
         if($isLock) {

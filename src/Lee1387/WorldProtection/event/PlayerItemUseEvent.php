@@ -9,6 +9,7 @@ use Lee1387\WorldProtection\language\KnownTranslations;
 use Lee1387\WorldProtection\language\LanguageManager;
 use Lee1387\WorldProtection\language\TranslationKeys;
 use Lee1387\WorldProtection\world\WorldManager;
+use Lee1387\WorldProtection\world\WorldProperty;
 
 class PlayerItemUseEvent
 {
@@ -20,7 +21,7 @@ class PlayerItemUseEvent
         $itemTypeId = $event->getItem()->getTypeId();
         $worldItemBanned = WorldManager::getProperty(
             world: $world,
-            property: "item-ban"
+            property: WorldProperty::BAN_ITEM
         );
         if (is_array($worldItemBanned)) {
             if (in_array($itemTypeId, $worldItemBanned)) {
