@@ -4,16 +4,27 @@ declare(strict_types=1);
 
 namespace Lee1387\WorldProtection\event;
 
+use pocketmine\event\EventPriority;
+use pocketmine\event\Listener;
 use pocketmine\event\server\CommandEvent as PMCommandEvent;
 use pocketmine\player\Player;
 use Lee1387\WorldProtection\language\KnownTranslations;
 use Lee1387\WorldProtection\language\LanguageManager;
 use Lee1387\WorldProtection\language\TranslationKeys;
+use Lee1387\WorldProtection\Loader;
 use Lee1387\WorldProtection\world\WorldManager;
 use Lee1387\WorldProtection\world\WorldProperty;
 
-class CommandEvent 
-{
+class CommandEvent implements Listener {
+
+    public function __construct(Loader $plugin) {
+        $plugin->getServer()->getPluginManager()->registerEvent(
+            PMCommandEvent::class,
+            \Closure::fromCallable([$this, "onCommand"]),
+            EventPriority::HIGH,
+            $plugin
+        );
+    }
 
     public function onCommand(PMCommandEvent $event): void {
         $player = $event->getSender();
@@ -25,7 +36,7 @@ class CommandEvent
         $command = strtolower($commandLine[0] ?? "");
         $worldCommandBanned = WorldManager::getProperty(
             world: $world,
-            property: WorldPropety::BAN_COMMAND
+            property: WorldProperty::BAN_COMMAND
         );
         if (is_array($worldCommandBanned)) {
             if (in_array($command, $worldCommandBanned)) {

@@ -6,15 +6,26 @@ namespace Lee1387\WorldProtection\event;
 
 use pocketmine\event\entity\EntityDamageByEntityEvent;
 use pocketmine\event\entity\EntityDamageEvent as PMEntityDamageEvent;
+use pocketmine\event\EventPriority;
+use pocketmine\event\Listener;
 use pocketmine\player\Player;
 use Lee1387\WorldProtection\language\KnownTranslations;
 use Lee1387\WorldProtection\language\LanguageManager;
 use Lee1387\WorldProtection\language\TranslationKeys;
+use Lee1387\WorldProtection\Loader;
 use Lee1387\WorldProtection\world\WorldManager;
 use Lee1387\WorldProtection\world\WorldProperty;
 
-class EntityDamageEvent
-{
+class EntityDamageEvent implements Listener {
+
+    public function __construct(Loader $plugin) {
+        $plugin->getServer()->getPluginManager()->registerEvent(
+            PMEntityDamageEvent::class,
+            \Closure::fromCallable([$this, "onEntityDamage"]),
+            EventPriority::HIGH,
+            $plugin
+        );
+    }
 
     public function onEntityDamage(PMEntityDamageEvent $event): void {
         if ($event->isCancelled()) return;
