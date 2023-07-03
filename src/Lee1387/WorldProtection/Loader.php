@@ -7,7 +7,6 @@ namespace Lee1387\WorldProtection;
 use pocketmine\plugin\PluginBase;
 use Lee1387\WorldProtection\commands\WorldProtection;
 use Lee1387\WorldProtection\event\BlockBreakEvent;
-use Lee1387\WorldProtection\event\BlockPlaceEvent;
 use Lee1387\WorldProtection\event\CommandEvent;
 use Lee1387\WorldProtection\event\EntityDamageEvent;
 use Lee1387\WorldProtection\event\EntityTrampleEvent;
@@ -21,7 +20,6 @@ class Loader extends PluginBase {
 
     protected const EVENTS = [
         BlockBreakEvent::class,
-        BlockPlaceEvent::class,
         CommandEvent::class,
         EntityDamageEvent::class,
         EntityTrampleEvent::class,

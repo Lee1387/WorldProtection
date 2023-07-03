@@ -1,5 +1,5 @@
 name: WorldProtection
-version: 0.0.3
+version: 0.0.4
 api: 5.0.0
 main: Lee1387\WorldProtection\Loader
 author: Lee1387
@@ -10,3 +10,6 @@ permissions:
     worldprotection.command:
         description: Allows the player to use the command
         default: true
+    worldprotection.build.bypass:
+        description: Allows the player to bypass the build protection 
+        default: op

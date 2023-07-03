@@ -32,6 +32,7 @@
 | Permission       | Description                       |
 |------------------|-----------------------------------|
 | `worldprotection.command` | Allow use of all commands.       |
+| `worldprotection.build.bypass` | Allows players to build in locked worlds |
 
 ## Documentation
 - This plugin allows you to protect your world from grief, pvp, commands, items, and decaying blocks.
