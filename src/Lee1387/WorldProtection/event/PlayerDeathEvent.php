@@ -7,6 +7,7 @@ namespace Lee1387\WorldProtection\event;
 use pocketmine\event\EventPriority;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerDeathEvent as PMPlayerDeathEvent;
+use ReflectionException;
 use Lee1387\WorldProtection\language\KnownTranslations;
 use Lee1387\WorldProtection\language\LanguageManager;
 use Lee1387\WorldProtection\language\TranslationKeys;
@@ -16,10 +17,13 @@ use Lee1387\WorldProtection\world\WorldProperty;
 
 class PlayerDeathEvent implements Listener {
 
+    /**
+     * @throws ReflectionException
+     */
     public function __construct(Loader $plugin) {
         $plugin->getServer()->getPluginManager()->registerEvent(
             PMPlayerDeathEvent::class,
-            \Closure::fromCallable([$this, "onDeath"]),
+            $this->onDeath(...),
             EventPriority::HIGHEST,
             $plugin
         );

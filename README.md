@@ -42,7 +42,7 @@
 
 ## TODO
 - [ ] World Borders
-- [ ] Per world gamemodes
+- [x] Per world gamemodes
 - [ ] Limit players in worlds
 - [ ] No explosions in worlds
 

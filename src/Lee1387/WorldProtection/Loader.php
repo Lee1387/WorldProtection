@@ -13,6 +13,7 @@ use Lee1387\WorldProtection\event\EntityDamageEvent;
 use Lee1387\WorldProtection\event\EntityTrampleEvent;
 use Lee1387\WorldProtection\event\PlayerDeathEvent;
 use Lee1387\WorldProtection\event\PlayerItemUseEvent;
+use Lee1387\WorldProtection\event\WorldPerGModeEvent;
 use Lee1387\WorldProtection\language\LanguageManager;
 use Lee1387\WorldProtection\world\WorldManager;
 
@@ -21,13 +22,17 @@ class Loader extends PluginBase {
     protected const EVENTS = [
         BlockBreakEvent::class,
         BlockPlaceEvent::class,
+        CommandEvent::class,
         EntityDamageEvent::class,
         EntityTrampleEvent::class,
         PlayerDeathEvent::class,
         PlayerItemUseEvent::class,
-        CommandEvent::class
+        WorldPerGModeEvent::class
     ];
 
+    /**
+     * @throws \JsonException
+     */
     protected function onEnable(): void 
     {
         $this->saveDefaultConfig();

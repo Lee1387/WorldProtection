@@ -9,6 +9,7 @@ use pocketmine\event\entity\EntityDamageEvent as PMEntityDamageEvent;
 use pocketmine\event\EventPriority;
 use pocketmine\event\Listener;
 use pocketmine\player\Player;
+use ReflectionException;
 use Lee1387\WorldProtection\language\KnownTranslations;
 use Lee1387\WorldProtection\language\LanguageManager;
 use Lee1387\WorldProtection\language\TranslationKeys;
@@ -18,10 +19,13 @@ use Lee1387\WorldProtection\world\WorldProperty;
 
 class EntityDamageEvent implements Listener {
 
+    /**
+     * @throws ReflectionException
+     */
     public function __construct(Loader $plugin) {
         $plugin->getServer()->getPluginManager()->registerEvent(
             PMEntityDamageEvent::class,
-            \Closure::fromCallable([$this, "onEntityDamage"]),
+            $this->onEntityDamage(...),
             EventPriority::HIGHEST,
             $plugin
         );

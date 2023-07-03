@@ -7,16 +7,20 @@ namespace Lee1387\WorldProtection\event;
 use pocketmine\event\entity\EntityTrampleFarmlandEvent;
 use pocketmine\event\EventPriority;
 use pocketmine\event\Listener;
+use ReflectionException;
 use Lee1387\WorldProtection\Loader;
 use Lee1387\WorldProtection\world\WorldManager;
 use Lee1387\WorldProtection\world\WorldProperty;
 
 class EntityTrampleEvent implements Listener {
 
+    /**
+     * @throws ReflectionException
+     */
     public function __construct(Loader $plugin) {
         $plugin->getServer()->getPluginManager()->registerEvent(
             EntityTrampleFarmlandEvent::class,
-            \Closure::fromCallable([$this, "onEntityTrample"]),
+            $this->onEntityTrample(...),
             EventPriority::HIGHEST,
             $plugin
         );

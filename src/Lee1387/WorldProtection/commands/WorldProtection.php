@@ -12,6 +12,7 @@ use Lee1387\WorldProtection\commands\subcmds\AntiDecay;
 use Lee1387\WorldProtection\commands\subcmds\BanCommand;
 use Lee1387\WorldProtection\commands\subcmds\BanItem;
 use Lee1387\WorldProtection\commands\subcmds\Build;
+use Lee1387\WorldProtection\commands\subcmds\Gamemode;
 use Lee1387\WorldProtection\commands\subcmds\KeepExperience;
 use Lee1387\WorldProtection\commands\subcmds\KeepInventory;
 use Lee1387\WorldProtection\commands\subcmds\PvP;
@@ -50,6 +51,7 @@ class WorldProtection extends Command implements PluginOwned {
             'unbanitem' => new BanItem($sender, $args, 'unban'),
             'bancommand', 'bancmd' => new BanCommand($sender, $args, 'ban'),
             'unbancommand', 'unbancmd' => new BanCommand($sender, $args, 'unban'),
+            'gamemode', 'gm' => new Gamemode($sender, $args),
             default => $sender->sendMessage(
                 LanguageManager::getTranslation(
                     key: KnownTranslations::COMMAND_USAGE
